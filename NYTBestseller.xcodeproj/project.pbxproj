@@ -78,11 +78,13 @@
 			isa = PBXGroup;
 			children = (
 				7CE6733320052A3400BBDA2A /* AppDelegate.swift */,
-				7CE6733520052A3400BBDA2A /* ViewController.swift */,
-				7CE6733720052A3400BBDA2A /* Main.storyboard */,
-				7CE6733A20052A3400BBDA2A /* Assets.xcassets */,
-				7CE6733C20052A3400BBDA2A /* LaunchScreen.storyboard */,
-				7CE6733F20052A3400BBDA2A /* Info.plist */,
+				7CE6735320052BAC00BBDA2A /* Supporting Files */,
+				7CE6735420052BC900BBDA2A /* UI */,
+				7CE6735520052C0D00BBDA2A /* Network */,
+				7CE6735620052C3A00BBDA2A /* Helpers */,
+				7CE6735720052C8900BBDA2A /* Models */,
+				7CE6735820052CE300BBDA2A /* Extensions */,
+				7CE6735920052D0A00BBDA2A /* Constants */,
 			);
 			path = NYTBestseller;
 			sourceTree = "<group>";
@@ -94,6 +96,60 @@
 				7CE6734A20052A3400BBDA2A /* Info.plist */,
 			);
 			path = NYTBestsellerTests;
+			sourceTree = "<group>";
+		};
+		7CE6735320052BAC00BBDA2A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7CE6733A20052A3400BBDA2A /* Assets.xcassets */,
+				7CE6733F20052A3400BBDA2A /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7CE6735420052BC900BBDA2A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7CE6733520052A3400BBDA2A /* ViewController.swift */,
+				7CE6733720052A3400BBDA2A /* Main.storyboard */,
+				7CE6733C20052A3400BBDA2A /* LaunchScreen.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		7CE6735520052C0D00BBDA2A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		7CE6735620052C3A00BBDA2A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7CE6735720052C8900BBDA2A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7CE6735820052CE300BBDA2A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7CE6735920052D0A00BBDA2A /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
