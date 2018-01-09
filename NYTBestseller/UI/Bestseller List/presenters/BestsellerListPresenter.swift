@@ -7,7 +7,19 @@
 //
 
 import Foundation
+import SwiftyJSON
 
-class BestsellterListPresenter {
+class BestsellerListPresenter {
     
+    func requestBestsellerByCategory() {
+        let category = "hardcover-fiction"
+        NYTNetwork.default.request(target: .list(category: category), success: { (data) in
+            let json = JSON(data as Any)
+            print(json["results"].arrayValue)
+        }, error: { (error) in
+            print(error)
+        }) { (failure) in
+            print(failure)
+        }
+    }
 }
