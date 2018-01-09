@@ -10,6 +10,7 @@
 		52959926B76569777753C3BE /* Pods_NYTBestseller.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E66573DBD47F5A3BD14BB9 /* Pods_NYTBestseller.framework */; };
 		7C23C731200555E40083FB95 /* NYTNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C23C730200555E40083FB95 /* NYTNetwork.swift */; };
 		7C23C733200560FA0083FB95 /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C23C732200560FA0083FB95 /* GeneralExtensions.swift */; };
+		7C23C735200567EC0083FB95 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C23C734200567EC0083FB95 /* CategoriesPresenter.swift */; };
 		7CE6733420052A3400BBDA2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6733320052A3400BBDA2A /* AppDelegate.swift */; };
 		7CE6733B20052A3400BBDA2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CE6733A20052A3400BBDA2A /* Assets.xcassets */; };
 		7CE6733E20052A3400BBDA2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE6733C20052A3400BBDA2A /* LaunchScreen.storyboard */; };
@@ -39,6 +40,7 @@
 		65F073E2A4E97940FD25B117 /* Pods_NYTBestsellerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYTBestsellerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C23C730200555E40083FB95 /* NYTNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTNetwork.swift; sourceTree = "<group>"; };
 		7C23C732200560FA0083FB95 /* GeneralExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralExtensions.swift; sourceTree = "<group>"; };
+		7C23C734200567EC0083FB95 /* CategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPresenter.swift; sourceTree = "<group>"; };
 		7CE6733020052A3400BBDA2A /* NYTBestseller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYTBestseller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE6733320052A3400BBDA2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CE6733A20052A3400BBDA2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 		7CE6736C200549BB00BBDA2A /* presenters */ = {
 			isa = PBXGroup;
 			children = (
+				7C23C734200567EC0083FB95 /* CategoriesPresenter.swift */,
 			);
 			path = presenters;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				7CE6735E2005469300BBDA2A /* BookDetailViewController.swift in Sources */,
 				7CE673622005488D00BBDA2A /* CategoriesViewController.swift in Sources */,
 				7C23C733200560FA0083FB95 /* GeneralExtensions.swift in Sources */,
+				7C23C735200567EC0083FB95 /* CategoriesPresenter.swift in Sources */,
 				7C23C731200555E40083FB95 /* NYTNetwork.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
