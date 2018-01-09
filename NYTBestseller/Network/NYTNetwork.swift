@@ -47,6 +47,7 @@ class NYTNetwork {
 
 enum NYTAPI {
     case listNames
+    case list(category: String)
 }
 
 extension NYTAPI: TargetType {
@@ -59,12 +60,14 @@ extension NYTAPI: TargetType {
         switch self {
         case .listNames:
             return "/lists/names.json"
+        case .list:
+            return "/lists.json"
         }
     }
         
     var method: Moya.Method {
         switch self {
-        case .listNames:
+        case .listNames, .list:
             return .get
         }
     }
@@ -74,8 +77,9 @@ extension NYTAPI: TargetType {
         case .listNames:
             let params = ["api-key": NYT_URL.apiKey]
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
-        default:
-            return .requestPlain
+        case .list(let category):
+            let params = ["api-key": NYT_URL.apiKey, "list": category]
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     
