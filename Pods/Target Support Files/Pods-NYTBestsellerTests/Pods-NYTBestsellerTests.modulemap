@@ -1,0 +1,6 @@
+framework module Pods_NYTBestsellerTests {
+  umbrella header "Pods-NYTBestsellerTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
