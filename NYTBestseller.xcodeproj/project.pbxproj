@@ -9,11 +9,15 @@
 /* Begin PBXBuildFile section */
 		52959926B76569777753C3BE /* Pods_NYTBestseller.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E66573DBD47F5A3BD14BB9 /* Pods_NYTBestseller.framework */; };
 		7CE6733420052A3400BBDA2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6733320052A3400BBDA2A /* AppDelegate.swift */; };
-		7CE6733620052A3400BBDA2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6733520052A3400BBDA2A /* ViewController.swift */; };
-		7CE6733920052A3400BBDA2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE6733720052A3400BBDA2A /* Main.storyboard */; };
 		7CE6733B20052A3400BBDA2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CE6733A20052A3400BBDA2A /* Assets.xcassets */; };
 		7CE6733E20052A3400BBDA2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE6733C20052A3400BBDA2A /* LaunchScreen.storyboard */; };
 		7CE6734920052A3400BBDA2A /* NYTBestsellerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6734820052A3400BBDA2A /* NYTBestsellerTests.swift */; };
+		7CE6735E2005469300BBDA2A /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6735D2005469300BBDA2A /* BookDetailViewController.swift */; };
+		7CE673602005487800BBDA2A /* BestsellerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6735F2005487800BBDA2A /* BestsellerListViewController.swift */; };
+		7CE673622005488D00BBDA2A /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE673612005488D00BBDA2A /* CategoriesViewController.swift */; };
+		7CE673642005492B00BBDA2A /* BookDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE673632005492B00BBDA2A /* BookDetail.storyboard */; };
+		7CE673662005493C00BBDA2A /* BestsellerList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE673652005493C00BBDA2A /* BestsellerList.storyboard */; };
+		7CE673692005499E00BBDA2A /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE673682005499E00BBDA2A /* Categories.storyboard */; };
 		D70965E3AAC71F9333BCD461 /* Pods_NYTBestsellerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F073E2A4E97940FD25B117 /* Pods_NYTBestsellerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,14 +37,18 @@
 		65F073E2A4E97940FD25B117 /* Pods_NYTBestsellerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYTBestsellerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE6733020052A3400BBDA2A /* NYTBestseller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYTBestseller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE6733320052A3400BBDA2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7CE6733520052A3400BBDA2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7CE6733820052A3400BBDA2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CE6733A20052A3400BBDA2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CE6733D20052A3400BBDA2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CE6733F20052A3400BBDA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CE6734420052A3400BBDA2A /* NYTBestsellerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NYTBestsellerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE6734820052A3400BBDA2A /* NYTBestsellerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTBestsellerTests.swift; sourceTree = "<group>"; };
 		7CE6734A20052A3400BBDA2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CE6735D2005469300BBDA2A /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		7CE6735F2005487800BBDA2A /* BestsellerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestsellerListViewController.swift; sourceTree = "<group>"; };
+		7CE673612005488D00BBDA2A /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		7CE673632005492B00BBDA2A /* BookDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookDetail.storyboard; sourceTree = "<group>"; };
+		7CE673652005493C00BBDA2A /* BestsellerList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BestsellerList.storyboard; sourceTree = "<group>"; };
+		7CE673682005499E00BBDA2A /* Categories.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
 		BFE053009A8C86F0B0EBD22D /* Pods-NYTBestseller.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTBestseller.release.xcconfig"; path = "Pods/Target Support Files/Pods-NYTBestseller/Pods-NYTBestseller.release.xcconfig"; sourceTree = "<group>"; };
 		C6E66573DBD47F5A3BD14BB9 /* Pods_NYTBestseller.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYTBestseller.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1A9F3D3B1DC3FE1E06CDFB /* Pods-NYTBestsellerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTBestsellerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NYTBestsellerTests/Pods-NYTBestsellerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -131,8 +139,9 @@
 		7CE6735420052BC900BBDA2A /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				7CE6733520052A3400BBDA2A /* ViewController.swift */,
-				7CE6733720052A3400BBDA2A /* Main.storyboard */,
+				7CE6735C2005457800BBDA2A /* Book Detail */,
+				7CE6735B200544DF00BBDA2A /* Bestseller List */,
+				7CE6735A200544C400BBDA2A /* Categories */,
 				7CE6733C20052A3400BBDA2A /* LaunchScreen.storyboard */,
 			);
 			path = UI;
@@ -171,6 +180,105 @@
 			children = (
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		7CE6735A200544C400BBDA2A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7CE6736C200549BB00BBDA2A /* presenters */,
+				7CE673612005488D00BBDA2A /* CategoriesViewController.swift */,
+				7CE673682005499E00BBDA2A /* Categories.storyboard */,
+				7CE6737220054A1500BBDA2A /* Views */,
+				7CE6737120054A0D00BBDA2A /* Nibs */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		7CE6735B200544DF00BBDA2A /* Bestseller List */ = {
+			isa = PBXGroup;
+			children = (
+				7CE6736B200549B500BBDA2A /* presenters */,
+				7CE6735F2005487800BBDA2A /* BestsellerListViewController.swift */,
+				7CE673652005493C00BBDA2A /* BestsellerList.storyboard */,
+				7CE6737020054A0300BBDA2A /* Views */,
+				7CE6736F200549F600BBDA2A /* Nibs */,
+			);
+			path = "Bestseller List";
+			sourceTree = "<group>";
+		};
+		7CE6735C2005457800BBDA2A /* Book Detail */ = {
+			isa = PBXGroup;
+			children = (
+				7CE6736A200549AE00BBDA2A /* presenters */,
+				7CE6735D2005469300BBDA2A /* BookDetailViewController.swift */,
+				7CE673632005492B00BBDA2A /* BookDetail.storyboard */,
+				7CE6736D200549DA00BBDA2A /* Views */,
+				7CE6736E200549E500BBDA2A /* Nibs */,
+			);
+			path = "Book Detail";
+			sourceTree = "<group>";
+		};
+		7CE6736A200549AE00BBDA2A /* presenters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = presenters;
+			sourceTree = "<group>";
+		};
+		7CE6736B200549B500BBDA2A /* presenters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = presenters;
+			sourceTree = "<group>";
+		};
+		7CE6736C200549BB00BBDA2A /* presenters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = presenters;
+			sourceTree = "<group>";
+		};
+		7CE6736D200549DA00BBDA2A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7CE6736E200549E500BBDA2A /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Nibs;
+			sourceTree = "<group>";
+		};
+		7CE6736F200549F600BBDA2A /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Nibs;
+			sourceTree = "<group>";
+		};
+		7CE6737020054A0300BBDA2A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7CE6737120054A0D00BBDA2A /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Nibs;
+			sourceTree = "<group>";
+		};
+		7CE6737220054A1500BBDA2A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B6894E249E73938661D5772A /* Pods */ = {
@@ -274,8 +382,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CE6733E20052A3400BBDA2A /* LaunchScreen.storyboard in Resources */,
+				7CE673662005493C00BBDA2A /* BestsellerList.storyboard in Resources */,
 				7CE6733B20052A3400BBDA2A /* Assets.xcassets in Resources */,
-				7CE6733920052A3400BBDA2A /* Main.storyboard in Resources */,
+				7CE673642005492B00BBDA2A /* BookDetail.storyboard in Resources */,
+				7CE673692005499E00BBDA2A /* Categories.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,8 +511,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CE6733620052A3400BBDA2A /* ViewController.swift in Sources */,
+				7CE673602005487800BBDA2A /* BestsellerListViewController.swift in Sources */,
 				7CE6733420052A3400BBDA2A /* AppDelegate.swift in Sources */,
+				7CE6735E2005469300BBDA2A /* BookDetailViewController.swift in Sources */,
+				7CE673622005488D00BBDA2A /* CategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,14 +537,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7CE6733720052A3400BBDA2A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7CE6733820052A3400BBDA2A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7CE6733C20052A3400BBDA2A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -558,7 +662,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NT8XEMLY2Z;
-				INFOPLIST_FILE = NYTBestseller/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NYTBestseller/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Andres.NYTBestseller;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -574,7 +678,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NT8XEMLY2Z;
-				INFOPLIST_FILE = NYTBestseller/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NYTBestseller/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Andres.NYTBestseller;
 				PRODUCT_NAME = "$(TARGET_NAME)";

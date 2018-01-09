@@ -6,7 +6,7 @@ target 'NYTBestseller' do
   use_frameworks!
 
   # Pods for NYTBestseller
-  pod 'Kingfisher', '~> 1.1'
+  pod 'Kingfisher', '~> 4.0'
   pod 'Moya', '~> 10.0'
 
   target 'NYTBestsellerTests' do
