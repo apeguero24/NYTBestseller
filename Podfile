@@ -8,6 +8,7 @@ target 'NYTBestseller' do
   # Pods for NYTBestseller
   pod 'Kingfisher', '~> 4.0'
   pod 'Moya', '~> 10.0'
+  pod 'SwiftyJSON'
 
   target 'NYTBestsellerTests' do
     inherit! :search_paths
