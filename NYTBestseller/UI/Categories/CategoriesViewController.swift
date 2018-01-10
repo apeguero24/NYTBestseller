@@ -24,9 +24,14 @@ class CategoriesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBar()
         configureTableView()
         presenter.view = self
         presenter.requestBookCategories()
+    }
+    
+    private func configureNavigationBar() {
+        title = "Bestseller Categories"
     }
     
     private func configureTableView() {
@@ -35,6 +40,15 @@ class CategoriesViewController: UIViewController {
         
         let categoryNib = UINib(nibName: NibName.category, bundle: nil)
         categoriesTableView.register(categoryNib, forCellReuseIdentifier: CellID.category)
+    }
+    
+    fileprivate func navigateToBestsellerList(withCategory category: Category) {
+        let storyboard = UIStoryboard(name: StoryboardConstants.bestsellerList, bundle: nil)
+        guard let vc = storyboard.instantiateInitialViewController() as? BestsellerListViewController else{
+            return
+        }
+        vc.presenter.category = category
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -60,7 +74,8 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selecting")
+        let category = presenter.categories[indexPath.row]
+        navigateToBestsellerList(withCategory: category)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

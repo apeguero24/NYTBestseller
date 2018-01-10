@@ -11,9 +11,11 @@ import SwiftyJSON
 
 class BestsellerListPresenter {
     
+    var category: Category?
+    
     func requestBestsellerByCategory() {
-        let category = "hardcover-fiction"
-        NYTNetwork.default.request(target: .list(category: category), success: { (data) in
+        guard let encodedName = category?.encodedName else { return }
+        NYTNetwork.default.request(target: .list(category: encodedName), success: { (data) in
             let json = JSON(data as Any)
             print(json["results"].arrayValue)
         }, error: { (error) in
