@@ -9,8 +9,13 @@
 import Foundation
 import SwiftyJSON
 
+protocol CategoriesView {
+    func reloadTable()
+}
+
 class CategoriesPresenter {
     var categories = [Category]()
+    var view: CategoriesView?
     
     func requestBookCategories() {
         NYTNetwork.default.request(target: .listNames, success: { (data) in
@@ -31,5 +36,6 @@ class CategoriesPresenter {
             let category = Category(listName: listName, encodedName: encodedName)
             self.categories.append(category)
         }
+        view?.reloadTable()
     }
 }
