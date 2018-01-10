@@ -10,6 +10,14 @@ import UIKit
 
 class CategoriesViewController: UIViewController {
     
+    struct NibName {
+        static let category = "CategoryTableViewCell"
+    }
+    
+    struct CellID {
+        static let category = "categoriesId"
+    }
+    
     let presenter = CategoriesPresenter()
 
     @IBOutlet weak var categoriesTableView: UITableView!
@@ -25,8 +33,8 @@ class CategoriesViewController: UIViewController {
         categoriesTableView.delegate = self
         categoriesTableView.dataSource = self
         
-        let categoryNib = UINib(nibName: "CategoryTableViewCell", bundle: nil)
-        categoriesTableView.register(categoryNib, forCellReuseIdentifier: "categoriesId")
+        let categoryNib = UINib(nibName: NibName.category, bundle: nil)
+        categoriesTableView.register(categoryNib, forCellReuseIdentifier: CellID.category)
     }
 }
 
@@ -36,13 +44,23 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesId", for: indexPath) as? CategoryTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellID.category, for: indexPath) as? CategoryTableViewCell else {
             return UITableViewCell()
+        }
+        
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = .lightGray
+        } else {
+            cell.backgroundColor = .white
         }
         
         cell.categoryLabel.text = presenter.categories[indexPath.row].listName
     
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selecting")
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
