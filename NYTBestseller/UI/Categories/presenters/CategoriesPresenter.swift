@@ -10,11 +10,13 @@ import Foundation
 import SwiftyJSON
 
 class CategoriesPresenter {
+    var categories = [Category]()
     
     func requestBookCategories() {
         NYTNetwork.default.request(target: .listNames, success: { (data) in
             let json = JSON(data as Any)
-            print(json["results"].arrayValue)
+            let results = json["results"].arrayValue
+            self.parseCategories(results: results)
         }, error: { (error) in
             print(error)
         }) { (failure) in
@@ -22,5 +24,12 @@ class CategoriesPresenter {
         }
     }
     
-    
+    private func parseCategories(results: [JSON]) {
+        results.forEach { result in
+            let listName = result["list_name"].stringValue
+            let encodedName = result["list_name_encoded"].stringValue
+            let category = Category(listName: listName, encodedName: encodedName)
+            self.categories.append(category)
+        }
+    }
 }

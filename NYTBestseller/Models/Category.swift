@@ -10,8 +10,10 @@ import Foundation
 
 class Category {
     var listName: String
+    var encodedName: String
     
-    init(listName: String) {
+    init(listName: String, encodedName: String) {
         self.listName = listName
+        self.encodedName = encodedName
     }
 }
