@@ -15,15 +15,20 @@ class Book {
     var amazonLink: String
     var category: String
     var rank: Int
+    var weeksOnList: Int
     var isbns: String
     
-    required init(title: String, author: String, description: String, amazonLink: String, category: String, rank: Int, isbns: String) {
+    required init(title: String, author: String, description: String,
+                  amazonLink: String, category: String, weeksOnList: Int,
+                  rank: Int, isbns: String) {
+        
         self.title = title
         self.author = author
         self.description = description
         self.amazonLink = amazonLink
         self.category = category
         self.rank = rank
+        self.weeksOnList = weeksOnList
         self.isbns = isbns
     }
 }
