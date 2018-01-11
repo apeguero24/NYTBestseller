@@ -25,6 +25,9 @@ class BestsellerListViewController: UIViewController {
     @IBOutlet weak var bestsellerTableView: UITableView!
     @IBOutlet weak var weekOnListButton: UIButton!
     
+    var rankAscending = false
+    var weeksAscending = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.view = self
@@ -41,10 +44,40 @@ class BestsellerListViewController: UIViewController {
     }
     
     @IBAction func rankButtonPressed(_ sender: Any) {
-        presenter.sortByRanking()
+        weekOnListButton.setTitle("-Not Selected-", for: .normal)
+        weekOnListButton.setTitleColor(.lightGray, for: .normal)
+        weeksAscending = false
+        
+        if rankAscending {
+            rankButton.setTitle("Highest to Lowest +", for: .normal)
+            rankButton.setTitleColor(.blue, for: .normal)
+            presenter.sortByRanking(ascending: true)
+            rankAscending = false
+        } else {
+            rankButton.setTitle("Lowest to Highest -", for: .normal)
+            rankButton.setTitleColor(.red, for: .normal)
+            presenter.sortByRanking(ascending: false)
+            rankAscending = true
+        }
+
     }
     
     @IBAction func weeksOnListButtonPressed(_ sender: Any) {
+        rankButton.setTitle("-Not Selected-", for: .normal)
+        rankButton.setTitleColor(.lightGray, for: .normal)
+        rankAscending = false
+        
+        if weeksAscending {
+            weekOnListButton.setTitle("Most to Least +", for: .normal)
+            weekOnListButton.setTitleColor(.blue, for: .normal)
+            presenter.sortByWeekOnList(ascending: true)
+            weeksAscending = false
+        } else {
+            weekOnListButton.setTitle("Least to Most -", for: .normal)
+            weekOnListButton.setTitleColor(.red, for: .normal)
+            presenter.sortByWeekOnList(ascending: false)
+            weeksAscending = true
+        }
     }
 }
 

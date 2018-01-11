@@ -35,13 +35,22 @@ class BestsellerListPresenter {
         }
     }
     
-    func sortByRanking() {
-        books.sort { $0.rank > $1.rank }
+    func sortByRanking(ascending: Bool) {
+        if ascending {
+            books.sort { $0.rank < $1.rank }
+        } else {
+            books.sort { $0.rank > $1.rank }
+        }
         view?.reloadTable()
     }
     
-    func sortByWeekOnList() {
-        
+    func sortByWeekOnList(ascending: Bool) {
+        if ascending {
+            books.sort { $0.weeksOnList > $1.weeksOnList }
+        } else {
+            books.sort { $0.weeksOnList < $1.weeksOnList }
+        }
+        view?.reloadTable()
     }
     
     private func fetchBookCover(forISBN isbn: String, completion: @escaping BookCoverCompletion) {
