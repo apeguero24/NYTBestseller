@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BestsellerListViewController: UIViewController {
     
@@ -53,6 +54,7 @@ extension BestsellerListViewController: UITableViewDelegate, UITableViewDataSour
         let book = presenter.books[indexPath.row]
         cell.bookTitleLabel.text = book.title
         cell.authorLabel.text = book.author
+        cell.coverImageView.kf.setImage(with: book.coverLink)
         
         return cell
     }
@@ -65,5 +67,10 @@ extension BestsellerListViewController: UITableViewDelegate, UITableViewDataSour
 extension BestsellerListViewController: BestsellerView {
     func reloadTable() {
         bestsellerTableView.reloadData()
+    }
+    
+    func refreshCell(index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        bestsellerTableView.reloadRows(at: [indexPath], with: .left)
     }
 }

@@ -12,4 +12,8 @@ extension String {
     var UTF8EncodedData: Data {
         return self.data(using: String.Encoding.utf8)!
     }
+    
+    func replace(target: String, withString: String) -> String {
+        return self.replacingOccurrences(of: target, with: withString, options: NSString.CompareOptions.literal, range: nil)
+    }
 }

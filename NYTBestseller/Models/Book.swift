@@ -12,6 +12,7 @@ class Book {
     var title: String
     var author: String
     var description: String
+    var coverLink: URL?
     var amazonLink: String
     var category: String
     var rank: Int
