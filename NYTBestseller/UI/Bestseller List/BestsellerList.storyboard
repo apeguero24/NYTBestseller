@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,65 +20,97 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uq5-Kw-1me">
-                                <rect key="frame" x="0.0" y="179" width="375" height="488"/>
+                                <rect key="frame" x="0.0" y="186" width="375" height="481"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weeks on List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ba-jt-5WC">
-                                <rect key="frame" x="126" y="105" width="123" height="23"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPx-Ob-pzT">
-                                <rect key="frame" x="152" y="27" width="72" height="23"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Drb-PB-rEA">
+                                <rect key="frame" x="0.0" y="83" width="375" height="103"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOb-Zd-Jp6">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="103"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPx-Ob-pzT">
+                                                <rect key="frame" x="58" y="40" width="72" height="23"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVB-Bh-pEo">
+                                                <rect key="frame" x="13" y="61" width="162" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="7cG-7U-qGF"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <state key="normal" title="Highest to Lowest +"/>
+                                                <connections>
+                                                    <action selector="rankButtonPressed:" destination="mw4-5j-7O2" eventType="touchUpInside" id="pNA-fW-nk2"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="qVB-Bh-pEo" firstAttribute="centerX" secondItem="yOb-Zd-Jp6" secondAttribute="centerX" id="2nn-wl-qyu"/>
+                                            <constraint firstItem="qVB-Bh-pEo" firstAttribute="top" secondItem="CPx-Ob-pzT" secondAttribute="bottom" constant="-2" id="98B-6t-xdl"/>
+                                            <constraint firstItem="CPx-Ob-pzT" firstAttribute="centerX" secondItem="yOb-Zd-Jp6" secondAttribute="centerX" id="WrR-2x-kMp"/>
+                                            <constraint firstItem="CPx-Ob-pzT" firstAttribute="centerY" secondItem="yOb-Zd-Jp6" secondAttribute="centerY" id="dFd-Xj-nFC"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kuj-nq-AvW">
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="103"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVp-pB-JGr">
+                                                <rect key="frame" x="32" y="61" width="123" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="FJd-Uj-UE1"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <state key="normal" title="Most to Least -"/>
+                                                <connections>
+                                                    <action selector="weeksOnListButtonPressed:" destination="mw4-5j-7O2" eventType="touchUpInside" id="fhg-IW-2Yg"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weeks on List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ba-jt-5WC">
+                                                <rect key="frame" x="32" y="40" width="123" height="23"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="5Ba-jt-5WC" firstAttribute="centerX" secondItem="Kuj-nq-AvW" secondAttribute="centerX" id="LbV-Vr-fOD"/>
+                                            <constraint firstItem="UVp-pB-JGr" firstAttribute="top" secondItem="5Ba-jt-5WC" secondAttribute="bottom" constant="-2" id="SPh-hd-D6I"/>
+                                            <constraint firstItem="UVp-pB-JGr" firstAttribute="centerX" secondItem="Kuj-nq-AvW" secondAttribute="centerX" id="qtI-mc-3Jh"/>
+                                            <constraint firstItem="5Ba-jt-5WC" firstAttribute="centerY" secondItem="Kuj-nq-AvW" secondAttribute="centerY" id="uaw-no-ata"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="23" id="yFI-3b-FH4"/>
+                                    <constraint firstAttribute="width" secondItem="Drb-PB-rEA" secondAttribute="height" multiplier="2:1" constant="169" id="Ull-H7-WZb"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVB-Bh-pEo">
-                                <rect key="frame" x="106" y="58" width="162" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Highest to Lowest +"/>
-                                <connections>
-                                    <action selector="rankButtonPressed:" destination="mw4-5j-7O2" eventType="touchUpInside" id="pNA-fW-nk2"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVp-pB-JGr">
-                                <rect key="frame" x="127" y="136" width="123" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Most to Least -"/>
-                                <connections>
-                                    <action selector="weeksOnListButtonPressed:" destination="mw4-5j-7O2" eventType="touchUpInside" id="fhg-IW-2Yg"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UVp-pB-JGr" firstAttribute="top" secondItem="5Ba-jt-5WC" secondAttribute="bottom" constant="8" id="0d9-TY-FtX"/>
-                            <constraint firstItem="UVp-pB-JGr" firstAttribute="centerX" secondItem="X5l-25-kid" secondAttribute="centerX" constant="1" id="AV9-Wn-15L"/>
+                            <constraint firstItem="Drb-PB-rEA" firstAttribute="leading" secondItem="v6L-kW-hOb" secondAttribute="leading" id="GX1-ye-dG3"/>
                             <constraint firstItem="Uq5-Kw-1me" firstAttribute="leading" secondItem="v6L-kW-hOb" secondAttribute="leading" id="GeT-N1-c2t"/>
-                            <constraint firstItem="5Ba-jt-5WC" firstAttribute="centerX" secondItem="X5l-25-kid" secondAttribute="centerX" id="QeL-uI-gLz"/>
-                            <constraint firstItem="5Ba-jt-5WC" firstAttribute="leading" secondItem="v6L-kW-hOb" secondAttribute="leading" constant="126" id="SQI-IZ-bxw"/>
-                            <constraint firstItem="v6L-kW-hOb" firstAttribute="trailing" secondItem="CPx-Ob-pzT" secondAttribute="trailing" constant="151" id="VB7-gr-xIR"/>
-                            <constraint firstItem="Uq5-Kw-1me" firstAttribute="top" secondItem="UVp-pB-JGr" secondAttribute="bottom" constant="9" id="awX-HM-zZv"/>
+                            <constraint firstItem="Drb-PB-rEA" firstAttribute="top" secondItem="X5l-25-kid" secondAttribute="top" constant="83" id="JmI-oX-iOz"/>
+                            <constraint firstItem="Uq5-Kw-1me" firstAttribute="top" secondItem="Drb-PB-rEA" secondAttribute="bottom" id="Sls-7y-VwY"/>
                             <constraint firstItem="Uq5-Kw-1me" firstAttribute="trailing" secondItem="v6L-kW-hOb" secondAttribute="trailing" id="bqq-Dx-Eua"/>
-                            <constraint firstItem="CPx-Ob-pzT" firstAttribute="leading" secondItem="v6L-kW-hOb" secondAttribute="leading" constant="152" id="iPr-7P-wrf"/>
-                            <constraint firstItem="v6L-kW-hOb" firstAttribute="trailing" secondItem="5Ba-jt-5WC" secondAttribute="trailing" constant="126" id="jEG-fo-2mV"/>
-                            <constraint firstItem="qVB-Bh-pEo" firstAttribute="top" secondItem="CPx-Ob-pzT" secondAttribute="bottom" constant="8" id="rX2-7l-fxd"/>
+                            <constraint firstItem="Drb-PB-rEA" firstAttribute="trailing" secondItem="v6L-kW-hOb" secondAttribute="trailing" id="kmq-oE-VIh"/>
                             <constraint firstItem="Uq5-Kw-1me" firstAttribute="bottom" secondItem="v6L-kW-hOb" secondAttribute="bottom" id="tAF-DH-Nvb"/>
-                            <constraint firstItem="5Ba-jt-5WC" firstAttribute="top" secondItem="qVB-Bh-pEo" secondAttribute="bottom" constant="13" id="tIX-51-yyA"/>
-                            <constraint firstItem="qVB-Bh-pEo" firstAttribute="centerX" secondItem="X5l-25-kid" secondAttribute="centerX" id="uDK-k3-fvs"/>
-                            <constraint firstItem="CPx-Ob-pzT" firstAttribute="top" secondItem="v6L-kW-hOb" secondAttribute="top" constant="7" id="vqH-SV-boe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v6L-kW-hOb"/>
                     </view>
                     <connections>
                         <outlet property="bestsellerTableView" destination="Uq5-Kw-1me" id="JbG-hX-LPo"/>
                         <outlet property="rankButton" destination="qVB-Bh-pEo" id="kTx-uc-BlJ"/>
+                        <outlet property="rankLabel" destination="CPx-Ob-pzT" id="Rv6-fk-aq2"/>
+                        <outlet property="rankingView" destination="yOb-Zd-Jp6" id="L3u-iG-DoS"/>
+                        <outlet property="stackTopConstraint" destination="JmI-oX-iOz" id="VGF-nk-iKR"/>
                         <outlet property="weekOnListButton" destination="UVp-pB-JGr" id="cEU-y1-i4o"/>
+                        <outlet property="weeksLabel" destination="5Ba-jt-5WC" id="mdg-gA-4A6"/>
+                        <outlet property="weeksView" destination="Kuj-nq-AvW" id="QZ1-jh-3H2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMS-dR-Y69" userLabel="First Responder" sceneMemberID="firstResponder"/>

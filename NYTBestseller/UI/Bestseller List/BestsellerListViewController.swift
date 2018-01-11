@@ -25,11 +25,22 @@ class BestsellerListViewController: UIViewController {
     @IBOutlet weak var bestsellerTableView: UITableView!
     @IBOutlet weak var weekOnListButton: UIButton!
     
+    @IBOutlet weak var rankingView: UIView!
+    @IBOutlet weak var weeksView: UIView!
+    @IBOutlet weak var stackTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var rankLabel: UILabel!
+    @IBOutlet weak var weeksLabel: UILabel!
+    
     var rankAscending = false
     var weeksAscending = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let height = navigationController?.navigationBar.frame.size.height {
+            stackTopConstraint.constant = height
+            
+        }
         presenter.view = self
         configureTableView()
         presenter.requestBestsellerByCategory()
@@ -46,16 +57,22 @@ class BestsellerListViewController: UIViewController {
     @IBAction func rankButtonPressed(_ sender: Any) {
         weekOnListButton.setTitle("-Not Selected-", for: .normal)
         weekOnListButton.setTitleColor(.lightGray, for: .normal)
+        weeksLabel.textColor = .black
+        weeksView.backgroundColor = .white
         weeksAscending = false
         
         if rankAscending {
             rankButton.setTitle("Highest to Lowest +", for: .normal)
-            rankButton.setTitleColor(.blue, for: .normal)
+            rankLabel.textColor = .white
+            rankButton.setTitleColor(.white, for: .normal)
+            rankingView.backgroundColor = .blue
             presenter.sortByRanking(ascending: true)
             rankAscending = false
         } else {
             rankButton.setTitle("Lowest to Highest -", for: .normal)
-            rankButton.setTitleColor(.red, for: .normal)
+            rankLabel.textColor = .white
+            rankButton.setTitleColor(.white, for: .normal)
+            rankingView.backgroundColor = .red
             presenter.sortByRanking(ascending: false)
             rankAscending = true
         }
@@ -65,16 +82,22 @@ class BestsellerListViewController: UIViewController {
     @IBAction func weeksOnListButtonPressed(_ sender: Any) {
         rankButton.setTitle("-Not Selected-", for: .normal)
         rankButton.setTitleColor(.lightGray, for: .normal)
+        rankLabel.textColor = .black
+        rankingView.backgroundColor = .white
         rankAscending = false
         
         if weeksAscending {
             weekOnListButton.setTitle("Most to Least +", for: .normal)
-            weekOnListButton.setTitleColor(.blue, for: .normal)
+            weekOnListButton.setTitleColor(.white, for: .normal)
+            weeksLabel.textColor = .white
+            weeksView.backgroundColor = .blue
             presenter.sortByWeekOnList(ascending: true)
             weeksAscending = false
         } else {
             weekOnListButton.setTitle("Least to Most -", for: .normal)
-            weekOnListButton.setTitleColor(.red, for: .normal)
+            weekOnListButton.setTitleColor(.white, for: .normal)
+            weeksLabel.textColor = .white
+            weeksView.backgroundColor = .red
             presenter.sortByWeekOnList(ascending: false)
             weeksAscending = true
         }
@@ -94,12 +117,26 @@ extension BestsellerListViewController: UITableViewDelegate, UITableViewDataSour
         let book = presenter.books[indexPath.row]
         cell.bookTitleLabel.text = book.title
         cell.authorLabel.text = book.author
-        cell.coverImageView.kf.setImage(with: book.coverLink)
         cell.rankingLabel.text = "Rank #\(book.rank)"
         cell.weeksOnListLabel.text = "Weeks on List: \(book.weeksOnList)"
-        cell.activityIndicator.startAnimating()
+        configureCoverImage(forBook: book, withCell: cell)
         
         return cell
+    }
+    
+    func configureCoverImage(forBook book: Book, withCell cell: BestsellerTableViewCell) {
+        cell.activityIndicator.isHidden = false
+        cell.activityIndicator.startAnimating()
+        cell.coverImageView.kf.setImage(with: book.coverLink, placeholder: nil, options: nil, progressBlock: nil) { (image, error, _, _) in
+            if image != nil {
+                DispatchQueue.main.async {
+                    cell.activityIndicator.stopAnimating()
+                    cell.activityIndicator.isHidden = true
+                }
+            } else {
+                print("nil image")
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -118,10 +155,6 @@ extension BestsellerListViewController: BestsellerView {
     
     func refreshCell(index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
-        guard let cell = bestsellerTableView.dequeueReusableCell(withIdentifier: CellID.bestseller, for: indexPath) as? BestsellerTableViewCell else {
-            return
-        }
-        cell.activityIndicator.stopAnimating()
         bestsellerTableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
