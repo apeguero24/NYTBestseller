@@ -32,11 +32,15 @@ class BestsellerListViewController: UIViewController {
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var weeksLabel: UILabel!
     
-    var rankAscending = false
-    var weeksAscending = false
+    var rankAscending: Bool?
+    var weeksAscending: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        rankAscending = presenter.retriveDefault(key: SettingsConstants.ranking)
+        weeksAscending = presenter.retriveDefault(key: SettingsConstants.weeksOnList)
+        
         if let height = navigationController?.navigationBar.frame.size.height {
             stackTopConstraint.constant = height
             
@@ -55,19 +59,29 @@ class BestsellerListViewController: UIViewController {
     }
     
     @IBAction func rankButtonPressed(_ sender: Any) {
+        configureRankingView()
+    }
+    
+    @IBAction func weeksOnListButtonPressed(_ sender: Any) {
+        configureWeeksOnListView()
+    }
+    
+    private func configureRankingView() {
         weekOnListButton.setTitle("-Not Selected-", for: .normal)
         weekOnListButton.setTitleColor(.lightGray, for: .normal)
         weeksLabel.textColor = .black
         weeksView.backgroundColor = .white
-        weeksAscending = false
+        weeksAscending = nil
+        presenter.storingDefaults(setting: weeksAscending, key: SettingsConstants.weeksOnList)
         
-        if rankAscending {
+        if let r = rankAscending, r {
             rankButton.setTitle("Highest to Lowest +", for: .normal)
             rankLabel.textColor = .white
             rankButton.setTitleColor(.white, for: .normal)
             rankingView.backgroundColor = .blue
             presenter.sortByRanking(ascending: true)
             rankAscending = false
+            presenter.storingDefaults(setting: true, key: SettingsConstants.ranking)
         } else {
             rankButton.setTitle("Lowest to Highest -", for: .normal)
             rankLabel.textColor = .white
@@ -75,24 +89,26 @@ class BestsellerListViewController: UIViewController {
             rankingView.backgroundColor = .red
             presenter.sortByRanking(ascending: false)
             rankAscending = true
+            presenter.storingDefaults(setting: false, key: SettingsConstants.ranking)
         }
-
     }
     
-    @IBAction func weeksOnListButtonPressed(_ sender: Any) {
+    private func configureWeeksOnListView() {
         rankButton.setTitle("-Not Selected-", for: .normal)
         rankButton.setTitleColor(.lightGray, for: .normal)
         rankLabel.textColor = .black
         rankingView.backgroundColor = .white
-        rankAscending = false
+        rankAscending = nil
+        presenter.storingDefaults(setting: rankAscending, key: SettingsConstants.ranking)
         
-        if weeksAscending {
+        if let w = weeksAscending, w {
             weekOnListButton.setTitle("Most to Least +", for: .normal)
             weekOnListButton.setTitleColor(.white, for: .normal)
             weeksLabel.textColor = .white
             weeksView.backgroundColor = .blue
             presenter.sortByWeekOnList(ascending: true)
             weeksAscending = false
+            presenter.storingDefaults(setting: true, key: SettingsConstants.weeksOnList)
         } else {
             weekOnListButton.setTitle("Least to Most -", for: .normal)
             weekOnListButton.setTitleColor(.white, for: .normal)
@@ -100,6 +116,7 @@ class BestsellerListViewController: UIViewController {
             weeksView.backgroundColor = .red
             presenter.sortByWeekOnList(ascending: false)
             weeksAscending = true
+            presenter.storingDefaults(setting: false, key: SettingsConstants.weeksOnList)
         }
     }
 }
@@ -134,7 +151,7 @@ extension BestsellerListViewController: UITableViewDelegate, UITableViewDataSour
                     cell.activityIndicator.isHidden = true
                 }
             } else {
-                print("nil image")
+               
             }
         }
     }
@@ -156,5 +173,17 @@ extension BestsellerListViewController: BestsellerView {
     func refreshCell(index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
         bestsellerTableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
+    func booksDidLoad() {
+        if let w = weeksAscending, w {
+            configureWeeksOnListView()
+        } else if let r = rankAscending, r {
+            configureRankingView()
+        } else if let w = weeksAscending, w == false {
+            configureWeeksOnListView()
+        } else {
+            configureRankingView()
+        }
     }
 }

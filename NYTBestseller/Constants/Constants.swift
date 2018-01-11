@@ -11,3 +11,8 @@ import Foundation
 struct StoryboardConstants {
     static let bestsellerList = "BestsellerList"
 }
+
+struct SettingsConstants {
+    static let ranking = "ranking"
+    static let weeksOnList = "weeksOnList"
+}

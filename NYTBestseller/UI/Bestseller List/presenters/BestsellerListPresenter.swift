@@ -11,6 +11,7 @@ import SwiftyJSON
 
 protocol BestsellerView: class {
     func reloadTable()
+    func booksDidLoad()
     func refreshCell(index: Int)
 }
 
@@ -33,6 +34,18 @@ class BestsellerListPresenter {
         }) { (failure) in
             print(failure)
         }
+    }
+    
+    func storingDefaults(setting: Bool?, key: String) {
+        guard let category = self.category else { return }
+        let uniqueKey = "\(key)-\(category.encodedName)"
+        UserDefaults.standard.set(setting, forKey: uniqueKey)
+    }
+    
+    func retriveDefault(key: String) -> Bool? {
+        guard let category = self.category else { return false }
+        let uniqueKey = "\(key)-\(category.encodedName)"
+        return UserDefaults.standard.object(forKey: uniqueKey) as? Bool
     }
     
     func sortByRanking(ascending: Bool) {
@@ -101,7 +114,7 @@ class BestsellerListPresenter {
             self.books.append(book)
         }
         
-        view?.reloadTable()
+        view?.booksDidLoad()
         
         self.books.enumerated().forEach { (i, book) in
             fetchBookCover(forISBN: book.isbns, completion: { (imageURL) in
