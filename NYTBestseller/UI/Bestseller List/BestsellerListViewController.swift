@@ -163,7 +163,11 @@ extension BestsellerListViewController: UITableViewDelegate, UITableViewDataSour
                     cell.activityIndicator.isHidden = true
                 }
             } else {
-               
+                DispatchQueue.main.async {
+                    cell.activityIndicator.stopAnimating()
+                    cell.activityIndicator.isHidden = true
+                    cell.coverImageView.image = #imageLiteral(resourceName: "no_photo_avail")
+                }
             }
         }
     }
