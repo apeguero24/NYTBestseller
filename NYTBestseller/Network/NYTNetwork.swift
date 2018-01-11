@@ -12,6 +12,7 @@ import Moya
 struct NYT_URL {
     static let url = "https://api.nytimes.com/svc/books/v3"
     static let apiKey = "15855bdf127b4c69b537a5e83a83cb36"
+    static let coverURL = "https://www.googleapis.com/books/v1/volumes?q=isbn:"
 }
 
 class NYTNetwork {

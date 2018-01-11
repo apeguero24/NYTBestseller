@@ -9,13 +9,13 @@
 import Foundation
 import SwiftyJSON
 
-protocol CategoriesView {
+protocol CategoriesView: class {
     func reloadTable()
 }
 
 class CategoriesPresenter {
     var categories = [Category]()
-    var view: CategoriesView?
+    weak var view: CategoriesView?
     
     func requestBookCategories() {
         NYTNetwork.default.request(target: .listNames, success: { (data) in

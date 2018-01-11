@@ -9,10 +9,15 @@
 import Foundation
 import SwiftyJSON
 
+protocol BestsellerView: class {
+    func reloadTable()
+}
+
 class BestsellerListPresenter {
     
     var category: Category?
     var books = [Book]()
+    weak var view: BestsellerView?
     
     func requestBestsellerByCategory() {
         guard let encodedName = category?.encodedName else { return }
@@ -25,6 +30,10 @@ class BestsellerListPresenter {
         }) { (failure) in
             print(failure)
         }
+    }
+    
+    func fetchImageUsing(isbn: String) {
+        
     }
     
     private func parseBestsellerInCategory(results: [JSON]) {
@@ -43,5 +52,6 @@ class BestsellerListPresenter {
             let book = Book(title: title, author: author, description: description, amazonLink: amazonLink, category: category, weeksOnList: weekOnList, rank: rank, isbns: isbns)
             self.books.append(book)
         }
+        view?.reloadTable()
     }
 }
