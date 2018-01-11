@@ -58,6 +58,18 @@ class BestsellerListViewController: UIViewController {
         bestsellerTableView.register(bestsellerNib, forCellReuseIdentifier: CellID.bestseller)
     }
     
+    fileprivate func userOptionsManagement() {
+        if let w = weeksAscending, w {
+            configureWeeksOnListView()
+        } else if let r = rankAscending, r {
+            configureRankingView()
+        } else if let w = weeksAscending, w == false {
+            configureWeeksOnListView()
+        } else {
+            configureRankingView()
+        }
+    }
+    
     @IBAction func rankButtonPressed(_ sender: Any) {
         configureRankingView()
     }
@@ -176,14 +188,6 @@ extension BestsellerListViewController: BestsellerView {
     }
     
     func booksDidLoad() {
-        if let w = weeksAscending, w {
-            configureWeeksOnListView()
-        } else if let r = rankAscending, r {
-            configureRankingView()
-        } else if let w = weeksAscending, w == false {
-            configureWeeksOnListView()
-        } else {
-            configureRankingView()
-        }
+        userOptionsManagement()
     }
 }
