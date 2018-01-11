@@ -39,6 +39,13 @@ class BestsellerListViewController: UIViewController {
         let bestsellerNib = UINib(nibName: NibName.bestseller, bundle: nil)
         bestsellerTableView.register(bestsellerNib, forCellReuseIdentifier: CellID.bestseller)
     }
+    
+    @IBAction func rankButtonPressed(_ sender: Any) {
+        presenter.sortByRanking()
+    }
+    
+    @IBAction func weeksOnListButtonPressed(_ sender: Any) {
+    }
 }
 
 extension BestsellerListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -55,12 +62,19 @@ extension BestsellerListViewController: UITableViewDelegate, UITableViewDataSour
         cell.bookTitleLabel.text = book.title
         cell.authorLabel.text = book.author
         cell.coverImageView.kf.setImage(with: book.coverLink)
+        cell.rankingLabel.text = "Rank #\(book.rank)"
+        cell.weeksOnListLabel.text = "Weeks on List: \(book.weeksOnList)"
+        cell.activityIndicator.startAnimating()
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 250.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }
 
@@ -71,6 +85,10 @@ extension BestsellerListViewController: BestsellerView {
     
     func refreshCell(index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
-        bestsellerTableView.reloadRows(at: [indexPath], with: .left)
+        guard let cell = bestsellerTableView.dequeueReusableCell(withIdentifier: CellID.bestseller, for: indexPath) as? BestsellerTableViewCell else {
+            return
+        }
+        cell.activityIndicator.stopAnimating()
+        bestsellerTableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }

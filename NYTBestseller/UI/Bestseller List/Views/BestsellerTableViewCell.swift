@@ -12,4 +12,8 @@ class BestsellerTableViewCell: UITableViewCell {
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var rankingLabel: UILabel!
+    @IBOutlet weak var weeksOnListLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
 }

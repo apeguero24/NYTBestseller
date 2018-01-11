@@ -35,13 +35,22 @@ class BestsellerListPresenter {
         }
     }
     
-    func fetchBookCover(forISBN isbn: String, completion: @escaping BookCoverCompletion) {
+    func sortByRanking() {
+        books.sort { $0.rank > $1.rank }
+        view?.reloadTable()
+    }
+    
+    func sortByWeekOnList() {
+        
+    }
+    
+    private func fetchBookCover(forISBN isbn: String, completion: @escaping BookCoverCompletion) {
         let key = "&key=\(NYT_URL.googleApiKey)"
         guard let imageURL = URL(string: NYT_URL.coverURL + isbn + key) else {
             print("error converting string to URL")
             return
         }
-        print(imageURL)
+
         let task = URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
             guard error == nil else {
                 completion(nil)
@@ -49,13 +58,11 @@ class BestsellerListPresenter {
             }
             
             guard let content = data else {
-                print("2")
                 completion(nil)
                 return
             }
             
             let json = JSON(content)
-            print(json)
             guard let item = json["items"].arrayValue.first else {
                 completion(nil)
                 return
