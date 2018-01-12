@@ -20,3 +20,7 @@ struct SettingsConstants {
 struct CategoriesConstants {
     static let categories = "categories"
 }
+
+struct BooksContants {
+    static let books = "books"
+}

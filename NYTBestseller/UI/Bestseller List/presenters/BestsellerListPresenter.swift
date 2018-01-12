@@ -24,6 +24,7 @@ class BestsellerListPresenter {
     typealias BookCoverCompletion = (String?) -> Void
     
     func requestBestsellerByCategory() {
+        retrieveStoredBooks()
         guard let encodedName = category?.encodedName else { return }
         NYTNetwork.default.request(target: .list(category: encodedName), success: { (data) in
             let json = JSON(data as Any)
@@ -36,16 +37,38 @@ class BestsellerListPresenter {
         }
     }
     
-    func storingDefaults(setting: Bool?, key: String) {
+    func storeSettings(setting: Bool?, key: String) {
         guard let category = self.category else { return }
         let uniqueKey = "\(key)-\(category.encodedName)"
         UserDefaults.standard.set(setting, forKey: uniqueKey)
     }
     
-    func retriveDefault(key: String) -> Bool? {
+    func retrieveSettings(key: String) -> Bool? {
         guard let category = self.category else { return false }
         let uniqueKey = "\(key)-\(category.encodedName)"
         return UserDefaults.standard.object(forKey: uniqueKey) as? Bool
+    }
+    
+    
+    private func retrieveStoredBooks() {
+        print(#function)
+        guard let category = self.category else { return }
+        if let data = UserDefaults.standard.object(forKey: category.encodedName) as? Data,
+            let books = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Book] {
+            self.books = books
+            
+        } else {
+
+        }
+        view?.booksDidLoad()
+        view?.reloadTable()
+    }
+    
+    private func storeBooks() {
+        guard let category = self.category else { return }
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: books)
+        UserDefaults.standard.removeObject(forKey: category.encodedName)
+        UserDefaults.standard.set(encodedData, forKey: category.encodedName)
     }
     
     func sortByRanking(ascending: Bool) {
@@ -98,6 +121,7 @@ class BestsellerListPresenter {
     }
         
     private func parseBestsellerInCategory(results: [JSON]) {
+        books.removeAll()
         results.forEach { result in
             guard let bookDetails = result["book_details"].arrayValue.first else { return }
             let title = bookDetails["title"].stringValue
@@ -110,11 +134,13 @@ class BestsellerListPresenter {
             let category = result["list_name"].stringValue
             let weekOnList = result["weeks_on_list"].intValue
             
-            let book = Book(title: title, author: author, description: description, amazonLink: amazonLink, category: category, weeksOnList: weekOnList, rank: rank, isbns: isbns)
+            let book = Book(title: title, author: author, bookDescription: description, amazonLink: amazonLink, category: category, weeksOnList: weekOnList, rank: rank, isbns: isbns)
             self.books.append(book)
         }
-        
+
         view?.booksDidLoad()
+        storeBooks()
+        view?.reloadTable()
         
         self.books.enumerated().forEach { (i, book) in
             fetchBookCover(forISBN: book.isbns, completion: { (imageURL) in

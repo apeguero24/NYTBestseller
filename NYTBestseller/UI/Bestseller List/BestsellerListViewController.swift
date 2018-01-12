@@ -35,11 +35,13 @@ class BestsellerListViewController: UIViewController {
     var rankAscending: Bool?
     var weeksAscending: Bool?
     
+    var userOptionsConfigured = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        rankAscending = presenter.retriveDefault(key: SettingsConstants.ranking)
-        weeksAscending = presenter.retriveDefault(key: SettingsConstants.weeksOnList)
+        rankAscending = presenter.retrieveSettings(key: SettingsConstants.ranking)
+        weeksAscending = presenter.retrieveSettings(key: SettingsConstants.weeksOnList)
         
         if let height = navigationController?.navigationBar.frame.size.height {
             stackTopConstraint.constant = height
@@ -59,6 +61,7 @@ class BestsellerListViewController: UIViewController {
     }
     
     fileprivate func userOptionsManagement() {
+        userOptionsConfigured = true
         if let w = weeksAscending, w {
             configureWeeksOnListView()
         } else if let r = rankAscending, r {
@@ -84,7 +87,7 @@ class BestsellerListViewController: UIViewController {
         weeksLabel.textColor = .black
         weeksView.backgroundColor = .white
         weeksAscending = nil
-        presenter.storingDefaults(setting: weeksAscending, key: SettingsConstants.weeksOnList)
+        presenter.storeSettings(setting: weeksAscending, key: SettingsConstants.weeksOnList)
         
         if let r = rankAscending, r {
             rankButton.setTitle("Highest to Lowest +", for: .normal)
@@ -93,7 +96,7 @@ class BestsellerListViewController: UIViewController {
             rankingView.backgroundColor = .blue
             presenter.sortByRanking(ascending: true)
             rankAscending = false
-            presenter.storingDefaults(setting: true, key: SettingsConstants.ranking)
+            presenter.storeSettings(setting: true, key: SettingsConstants.ranking)
         } else {
             rankButton.setTitle("Lowest to Highest -", for: .normal)
             rankLabel.textColor = .white
@@ -101,7 +104,7 @@ class BestsellerListViewController: UIViewController {
             rankingView.backgroundColor = .red
             presenter.sortByRanking(ascending: false)
             rankAscending = true
-            presenter.storingDefaults(setting: false, key: SettingsConstants.ranking)
+            presenter.storeSettings(setting: false, key: SettingsConstants.ranking)
         }
     }
     
@@ -111,7 +114,7 @@ class BestsellerListViewController: UIViewController {
         rankLabel.textColor = .black
         rankingView.backgroundColor = .white
         rankAscending = nil
-        presenter.storingDefaults(setting: rankAscending, key: SettingsConstants.ranking)
+        presenter.storeSettings(setting: rankAscending, key: SettingsConstants.ranking)
         
         if let w = weeksAscending, w {
             weekOnListButton.setTitle("Most to Least +", for: .normal)
@@ -120,7 +123,7 @@ class BestsellerListViewController: UIViewController {
             weeksView.backgroundColor = .blue
             presenter.sortByWeekOnList(ascending: true)
             weeksAscending = false
-            presenter.storingDefaults(setting: true, key: SettingsConstants.weeksOnList)
+            presenter.storeSettings(setting: true, key: SettingsConstants.weeksOnList)
         } else {
             weekOnListButton.setTitle("Least to Most -", for: .normal)
             weekOnListButton.setTitleColor(.white, for: .normal)
@@ -128,7 +131,7 @@ class BestsellerListViewController: UIViewController {
             weeksView.backgroundColor = .red
             presenter.sortByWeekOnList(ascending: false)
             weeksAscending = true
-            presenter.storingDefaults(setting: false, key: SettingsConstants.weeksOnList)
+            presenter.storeSettings(setting: false, key: SettingsConstants.weeksOnList)
         }
     }
 }
@@ -192,6 +195,8 @@ extension BestsellerListViewController: BestsellerView {
     }
     
     func booksDidLoad() {
-        userOptionsManagement()
+        if !userOptionsConfigured {
+            userOptionsManagement()
+        }
     }
 }
