@@ -35,7 +35,7 @@ class BestsellerListViewController: UIViewController {
     var rankAscending: Bool?
     var weeksAscending: Bool?
     
-    var userOptionsConfigured = false
+    var userOptionsConfigured = false //Avoids configuring the user options twice
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +49,7 @@ class BestsellerListViewController: UIViewController {
         presenter.requestBestsellerByCategory()
     }
     
+    // Configures the title and height for a stack view using navigatioController settings
     private func configureNavigationBar() {
         if let category = presenter.category?.listName {
                   title = category
@@ -58,6 +59,7 @@ class BestsellerListViewController: UIViewController {
         }
     }
     
+    //Configures tableView delegate and datasource, adds custom cell nibs
     private func configureTableView() {
         bestsellerTableView.delegate = self
         bestsellerTableView.dataSource = self
@@ -66,6 +68,7 @@ class BestsellerListViewController: UIViewController {
         bestsellerTableView.register(bestsellerNib, forCellReuseIdentifier: CellID.bestseller)
     }
     
+    //A state machine for handing persistance and display of user options. It is needed in order to keep up with the possible combinations of user settings, such ranking (on/off) and weeks on list (on/off)
     fileprivate func userOptionsManagement() {
         userOptionsConfigured = true
         if let w = weeksAscending, w {
@@ -79,6 +82,7 @@ class BestsellerListViewController: UIViewController {
         }
     }
     
+    //Navigates tot he book detail view controller
     fileprivate func navigateToBookDetail(withBook book: Book) {
         let storyboard = UIStoryboard(name: StoryboardConstants.bookDetail, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? BookDetailViewController else{
@@ -96,6 +100,7 @@ class BestsellerListViewController: UIViewController {
         configureWeeksOnListView()
     }
     
+    //Configures the user interaction tap events on the selected user option for ranking
     private func configureRankingView() {
         weekOnListButton.setTitle("-Not Selected-", for: .normal)
         weekOnListButton.setTitleColor(.lightGray, for: .normal)
@@ -123,6 +128,8 @@ class BestsellerListViewController: UIViewController {
         }
     }
     
+    //Configures the user interaction tap events on the selected user option for weeks on list
+    //TODO: find a way to combine the inner logic for both ranking and weeks on list to make it more generic to both.
     private func configureWeeksOnListView() {
         rankButton.setTitle("-Not Selected-", for: .normal)
         rankButton.setTitleColor(.lightGray, for: .normal)
@@ -171,6 +178,12 @@ extension BestsellerListViewController: UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    /**
+        This method will configure the cover image from cache or redownload if needed.
+     - parameter book: The book to be configured
+     - parameter cell: reference to the table view cell being configured
+     - returns: Void
+     */
     func configureCoverImage(forBook book: Book, withCell cell: BestsellerTableViewCell) {
         cell.activityIndicator.isHidden = false
         cell.activityIndicator.startAnimating()
