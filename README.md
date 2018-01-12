@@ -20,7 +20,7 @@ git clone https://github.com/apeguero24/NYTBestseller.git
 
 ## Usage
 
-In order to use the app, you must have Xcode 9 and Swift 4. Upon opening:
+In order to use the app, you must have Xcode 9 and Swift 4. Upon opening `NYTBestseller.xcworkspace`:
 
 - Run on a simulator device (I used iphone 8)
 - Categories will load and instantly be cached
