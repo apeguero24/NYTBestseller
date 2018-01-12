@@ -10,6 +10,7 @@ import Foundation
 
 struct StoryboardConstants {
     static let bestsellerList = "BestsellerList"
+    static let bookDetail = "BookDetail"
 }
 
 struct SettingsConstants {

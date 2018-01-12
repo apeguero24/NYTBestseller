@@ -73,6 +73,15 @@ class BestsellerListViewController: UIViewController {
         }
     }
     
+    fileprivate func navigateToBookDetail(withBook book: Book) {
+        let storyboard = UIStoryboard(name: StoryboardConstants.bookDetail, bundle: nil)
+        guard let vc = storyboard.instantiateInitialViewController() as? BookDetailViewController else{
+            return
+        }
+        vc.presenter.book = book
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @IBAction func rankButtonPressed(_ sender: Any) {
         configureRankingView()
     }
@@ -180,7 +189,8 @@ extension BestsellerListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let book = presenter.books[indexPath.row]
+        navigateToBookDetail(withBook: book)
     }
 }
 
