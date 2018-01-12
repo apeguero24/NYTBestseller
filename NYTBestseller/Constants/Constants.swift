@@ -16,3 +16,7 @@ struct SettingsConstants {
     static let ranking = "ranking"
     static let weeksOnList = "weeksOnList"
 }
+
+struct CategoriesConstants {
+    static let categories = "categories"
+}

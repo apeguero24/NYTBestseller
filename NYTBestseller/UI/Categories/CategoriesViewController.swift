@@ -56,14 +56,10 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = presenter.categories.count
         if count == 0 {
-            guard let networkIssueView = Bundle.main.loadNibNamed("NoNetworkNoCacheView", owner: nil, options: nil)?.first as? NoNetworkNoCacheView else {
-                return 0
-            }
-            networkIssueView.sizeToFit()
-            tableView.backgroundView = networkIssueView
             tableView.separatorStyle = .none
+            return 0
         }
-        return presenter.categories.count
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,5 +91,14 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
 extension CategoriesViewController: CategoriesView {
     func reloadTable() {
         categoriesTableView.reloadData()
+    }
+    
+    func setNoNetworkNoCacheView() {
+        guard let networkIssueView = Bundle.main.loadNibNamed("NoNetworkNoCacheView", owner: nil, options: nil)?.first as? NoNetworkNoCacheView else {
+            return
+        }
+        networkIssueView.sizeToFit()
+        categoriesTableView.backgroundView = networkIssueView
+        categoriesTableView.separatorStyle = .none
     }
 }

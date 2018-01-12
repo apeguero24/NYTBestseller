@@ -11,13 +11,15 @@ import SwiftyJSON
 
 protocol CategoriesView: class {
     func reloadTable()
+    func setNoNetworkNoCacheView()
 }
 
 class CategoriesPresenter {
     var categories = [Category]()
     weak var view: CategoriesView?
-    
+
     func requestBookCategories() {
+        retrieveStoredCategories()
         NYTNetwork.default.request(target: .listNames, success: { (data) in
             let json = JSON(data as Any)
             let results = json["results"].arrayValue
@@ -29,6 +31,25 @@ class CategoriesPresenter {
         }
     }
     
+    private func retrieveStoredCategories() {
+        if let data = UserDefaults.standard.object(forKey: CategoriesConstants.categories) as? Data,
+            let categories = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Category] {
+            self.categories = categories
+            print("setting categories")
+        } else {
+            //helps prevent a flicker
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                self.view?.setNoNetworkNoCacheView()
+            })
+        }
+        view?.reloadTable()
+    }
+    
+    private func storeCategories() {
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: categories)
+        UserDefaults.standard.set(encodedData, forKey: CategoriesConstants.categories)
+    }
+    
     private func parseCategories(results: [JSON]) {
         results.forEach { result in
             let listName = result["list_name"].stringValue
@@ -36,6 +57,8 @@ class CategoriesPresenter {
             let category = Category(listName: listName, encodedName: encodedName)
             self.categories.append(category)
         }
+        
+        storeCategories()
         view?.reloadTable()
     }
 }
