@@ -22,6 +22,7 @@ class BookDetailViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         configureNavigationBar()
+        addLinkTapGesture()
     }
     
     //Sets the labels and other UI elements
@@ -37,6 +38,19 @@ class BookDetailViewController: UIViewController {
                                             self.coverImageView.image = #imageLiteral(resourceName: "no_photo_avail")
                                         }
             })
+        }
+    }
+    
+    private func addLinkTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnAmazonLink))
+        amazonLinkLabel.isUserInteractionEnabled = true
+        amazonLinkLabel.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func tappedOnAmazonLink() {
+        print("tap tap")
+        if let urlString = amazonLinkLabel.text, let link = URL(string: urlString) {
+            UIApplication.shared.open(link, options: [:], completionHandler: nil)
         }
     }
     
