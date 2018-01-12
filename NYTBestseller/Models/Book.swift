@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Book: NSObject, NSCoding {
     var title: String
