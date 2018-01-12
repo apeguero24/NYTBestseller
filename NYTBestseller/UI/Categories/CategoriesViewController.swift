@@ -34,6 +34,7 @@ class CategoriesViewController: UIViewController {
         title = "Categories"
     }
     
+    //Configures tableview delegate and datasource, and registers custom cell nibs
     private func configureTableView() {
         categoriesTableView.delegate = self
         categoriesTableView.dataSource = self
@@ -42,6 +43,7 @@ class CategoriesViewController: UIViewController {
         categoriesTableView.register(categoryNib, forCellReuseIdentifier: CellID.category)
     }
     
+    // navigates to the bestseller list view controller
     fileprivate func navigateToBestsellerList(withCategory category: Category) {
         let storyboard = UIStoryboard(name: StoryboardConstants.bestsellerList, bundle: nil)
         guard let vc = storyboard.instantiateInitialViewController() as? BestsellerListViewController else{
@@ -55,7 +57,7 @@ class CategoriesViewController: UIViewController {
 extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = presenter.categories.count
-        if count == 0 {
+        if count == 0 { // No categories / offline mode
             tableView.separatorStyle = .none
             return 0
         }
@@ -93,6 +95,7 @@ extension CategoriesViewController: CategoriesView {
         categoriesTableView.reloadData()
     }
     
+    //When the app is used for the first time but it's offline, it will help display a message view
     func setNoNetworkNoCacheView() {
         guard let networkIssueView = Bundle.main.loadNibNamed("NoNetworkNoCacheView", owner: nil, options: nil)?.first as? NoNetworkNoCacheView else {
             return

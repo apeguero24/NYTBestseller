@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 
+//Allows communication between the presenter and CategoriesViewController
 protocol CategoriesView: class {
     func reloadTable()
     func setNoNetworkNoCacheView()
@@ -17,7 +18,12 @@ protocol CategoriesView: class {
 class CategoriesPresenter {
     var categories = [Category]()
     weak var view: CategoriesView?
-
+    
+    
+    /**
+        This method will request the book categories from the NYT API
+     - returns: Void
+     */
     func requestBookCategories() {
         retrieveStoredCategories()
         NYTNetwork.default.request(target: .listNames, success: { (data) in
@@ -31,6 +37,10 @@ class CategoriesPresenter {
         }
     }
     
+    /**
+        This method retrieves the stored categories from UserDefaults for when there's no network connection
+     - returns: Void
+     */
     private func retrieveStoredCategories() {
         if let data = UserDefaults.standard.object(forKey: CategoriesConstants.categories) as? Data,
             let categories = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Category] {
@@ -45,11 +55,20 @@ class CategoriesPresenter {
         view?.reloadTable()
     }
     
+    /**
+     This method stores the categories from UserDefaults for when there's no network connection
+     - returns: Void
+     */
     private func storeCategories() {
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: categories)
         UserDefaults.standard.set(encodedData, forKey: CategoriesConstants.categories)
     }
     
+    /**
+        This method parses call the categories and stores them in cache
+     - parameter results: results from NYT API in JSON format
+     - returns: Void
+     */
     private func parseCategories(results: [JSON]) {
         results.forEach { result in
             let listName = result["list_name"].stringValue
