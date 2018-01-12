@@ -8,6 +8,8 @@
 
 import Foundation
 
+// These file holds all of the constants I need to use through out the app
+
 struct StoryboardConstants {
     static let bestsellerList = "BestsellerList"
     static let bookDetail = "BookDetail"
