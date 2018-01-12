@@ -11,7 +11,7 @@ NYT Bestseller app that connects to the NYT API and uses Google API to fetch cov
 
 ## Installation
 
-Cloning the repo will be enought to get the app running. Cocoapods have been tracked to avoid a `pod install`.
+Cloning the repo will be enough to get the app running. Cocoapods have been tracked to avoid a `pod install`.
 
 ```sh
 cd project-name
