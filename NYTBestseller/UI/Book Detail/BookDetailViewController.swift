@@ -24,6 +24,7 @@ class BookDetailViewController: UIViewController {
         configureNavigationBar()
     }
     
+    //Sets the labels and other UI elements
     private func setupUI() {
         if let book = presenter.book {
             titleLabel.text = book.title
@@ -39,6 +40,7 @@ class BookDetailViewController: UIViewController {
         }
     }
     
+    //Configures the navigation bar attributes 
     private func configureNavigationBar() {
         if let book = presenter.book {
             title = book.title
