@@ -59,7 +59,7 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
         let count = presenter.categories.count
         if count == 0 { // No categories / offline mode
             tableView.separatorStyle = .none
-            return 0
+            return count
         }
         return count
     }

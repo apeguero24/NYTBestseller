@@ -160,7 +160,12 @@ class BestsellerListViewController: UIViewController {
 
 extension BestsellerListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.books.count
+        let count = presenter.books.count
+        if count == 0 {
+            tableView.separatorStyle = .none
+            return count
+        }
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -227,5 +232,14 @@ extension BestsellerListViewController: BestsellerView {
         if !userOptionsConfigured {
             userOptionsManagement()
         }
+    }
+    
+    func notCachedNotification() {
+        guard let bestsellersNotCachedView = Bundle.main.loadNibNamed("BestsellersNotCachedView", owner: nil, options: nil)?.first as? BestsellersNotCachedView else {
+            return
+        }
+        bestsellersNotCachedView.sizeToFit()
+        bestsellerTableView.backgroundView = bestsellersNotCachedView
+        bestsellerTableView.separatorStyle = .none
     }
 }

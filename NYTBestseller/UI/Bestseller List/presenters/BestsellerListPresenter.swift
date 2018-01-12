@@ -13,6 +13,7 @@ import SwiftyJSON
 protocol BestsellerView: class {
     func reloadTable()
     func booksDidLoad()
+    func notCachedNotification()
     func refreshCell(index: Int)
 }
 
@@ -76,7 +77,10 @@ class BestsellerListPresenter {
             self.books = books
             
         } else {
-
+            //helps prevent a flicker
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                self.view?.notCachedNotification()
+            })
         }
         view?.booksDidLoad()
         view?.reloadTable()
