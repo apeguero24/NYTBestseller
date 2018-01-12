@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ukY-35-sX6" customClass="NoNetworkNoCacheView" customModule="NYTBestseller" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sad-cloud" translatesAutoresizingMaskIntoConstraints="NO" id="l6V-Kp-U0d">
+                    <rect key="frame" x="80" y="190" width="215" height="211"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="215" id="Nn5-Tr-k8b"/>
+                        <constraint firstAttribute="height" constant="211" id="azO-2G-XnD"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We couldn't connect to the internet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNU-0n-wf0">
+                    <rect key="frame" x="22" y="387" width="331" height="27"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="l6V-Kp-U0d" firstAttribute="centerY" secondItem="ukY-35-sX6" secondAttribute="centerY" constant="-38" id="35X-om-6Y8"/>
+                <constraint firstItem="lNU-0n-wf0" firstAttribute="centerX" secondItem="ukY-35-sX6" secondAttribute="centerX" id="b18-JS-ufO"/>
+                <constraint firstItem="l6V-Kp-U0d" firstAttribute="centerX" secondItem="ukY-35-sX6" secondAttribute="centerX" id="i1U-UL-p7S"/>
+                <constraint firstItem="lNU-0n-wf0" firstAttribute="centerY" secondItem="ukY-35-sX6" secondAttribute="centerY" constant="67" id="uCY-4d-ee6"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Wse-jq-7p9"/>
+            <point key="canvasLocation" x="-107.5" y="113.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="sad-cloud" width="540" height="540"/>
+    </resources>
+</document>

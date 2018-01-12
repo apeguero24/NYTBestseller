@@ -16,6 +16,8 @@
 		7C23C73B2005A8530083FB95 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C23C73A2005A8530083FB95 /* Book.swift */; };
 		7C23C73D2005B1780083FB95 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C23C73C2005B1780083FB95 /* CategoryTableViewCell.xib */; };
 		7C23C73F2005B1B80083FB95 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C23C73E2005B1B80083FB95 /* CategoryTableViewCell.swift */; };
+		7CA890A92008209500B39EDB /* NoNetworkNoCacheView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA890A82008209500B39EDB /* NoNetworkNoCacheView.xib */; };
+		7CA890AB2008231100B39EDB /* NoNetworkNoCacheView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA890AA2008231100B39EDB /* NoNetworkNoCacheView.swift */; };
 		7CB49D6C200681EB0013E0DD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB49D6B200681EB0013E0DD /* Constants.swift */; };
 		7CB49D6E2006F0DC0013E0DD /* BestsellerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB49D6D2006F0DC0013E0DD /* BestsellerTableViewCell.swift */; };
 		7CB49D702006F0EB0013E0DD /* BestsellerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CB49D6F2006F0EB0013E0DD /* BestsellerTableViewCell.xib */; };
@@ -54,6 +56,8 @@
 		7C23C73A2005A8530083FB95 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		7C23C73C2005B1780083FB95 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 		7C23C73E2005B1B80083FB95 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		7CA890A82008209500B39EDB /* NoNetworkNoCacheView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoNetworkNoCacheView.xib; sourceTree = "<group>"; };
+		7CA890AA2008231100B39EDB /* NoNetworkNoCacheView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNetworkNoCacheView.swift; sourceTree = "<group>"; };
 		7CB49D6B200681EB0013E0DD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7CB49D6D2006F0DC0013E0DD /* BestsellerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestsellerTableViewCell.swift; sourceTree = "<group>"; };
 		7CB49D6F2006F0EB0013E0DD /* BestsellerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BestsellerTableViewCell.xib; sourceTree = "<group>"; };
@@ -302,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				7C23C73C2005B1780083FB95 /* CategoryTableViewCell.xib */,
+				7CA890A82008209500B39EDB /* NoNetworkNoCacheView.xib */,
 			);
 			path = Nibs;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				7C23C73E2005B1B80083FB95 /* CategoryTableViewCell.swift */,
+				7CA890AA2008231100B39EDB /* NoNetworkNoCacheView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -418,6 +424,7 @@
 				7CE673662005493C00BBDA2A /* BestsellerList.storyboard in Resources */,
 				7CE6733B20052A3400BBDA2A /* Assets.xcassets in Resources */,
 				7C23C73D2005B1780083FB95 /* CategoryTableViewCell.xib in Resources */,
+				7CA890A92008209500B39EDB /* NoNetworkNoCacheView.xib in Resources */,
 				7CB49D702006F0EB0013E0DD /* BestsellerTableViewCell.xib in Resources */,
 				7CE673642005492B00BBDA2A /* BookDetail.storyboard in Resources */,
 				7CE673692005499E00BBDA2A /* Categories.storyboard in Resources */,
@@ -549,6 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CE673602005487800BBDA2A /* BestsellerListViewController.swift in Sources */,
+				7CA890AB2008231100B39EDB /* NoNetworkNoCacheView.swift in Sources */,
 				7C23C737200578600083FB95 /* BestsellerListPresenter.swift in Sources */,
 				7CE6733420052A3400BBDA2A /* AppDelegate.swift in Sources */,
 				7CE6735E2005469300BBDA2A /* BookDetailViewController.swift in Sources */,

@@ -54,6 +54,15 @@ class CategoriesViewController: UIViewController {
 
 extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let count = presenter.categories.count
+        if count == 0 {
+            guard let networkIssueView = Bundle.main.loadNibNamed("NoNetworkNoCacheView", owner: nil, options: nil)?.first as? NoNetworkNoCacheView else {
+                return 0
+            }
+            networkIssueView.sizeToFit()
+            tableView.backgroundView = networkIssueView
+            tableView.separatorStyle = .none
+        }
         return presenter.categories.count
     }
     
