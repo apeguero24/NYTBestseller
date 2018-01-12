@@ -1,6 +1,6 @@
 # NYTBestseller
 
-NYT Bestseller app that connects to the NYT API and uses Google API to fetch covers
+NYT Bestseller app that connects to the NYT API and uses Google API to fetch covers. If maximum quota for Google API fetches is reached, then covers won't be displayed. 
 
 ## Table of Contents
 
