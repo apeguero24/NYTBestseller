@@ -31,7 +31,7 @@ class CategoriesViewController: UIViewController {
     }
     
     private func configureNavigationBar() {
-        title = "Bestseller Categories"
+        title = "Categories"
     }
     
     private func configureTableView() {

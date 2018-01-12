@@ -43,13 +43,19 @@ class BestsellerListViewController: UIViewController {
         rankAscending = presenter.retrieveSettings(key: SettingsConstants.ranking)
         weeksAscending = presenter.retrieveSettings(key: SettingsConstants.weeksOnList)
         
-        if let height = navigationController?.navigationBar.frame.size.height {
-            stackTopConstraint.constant = height
-            
-        }
+        configureNavigationBar()
         presenter.view = self
         configureTableView()
         presenter.requestBestsellerByCategory()
+    }
+    
+    private func configureNavigationBar() {
+        if let category = presenter.category?.listName {
+                  title = category
+        }
+        if let height = navigationController?.navigationBar.frame.size.height {
+            stackTopConstraint.constant = height
+        }
     }
     
     private func configureTableView() {

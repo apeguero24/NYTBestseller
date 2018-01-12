@@ -20,7 +20,11 @@ class BookDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
+        configureNavigationBar()
+    }
+    
+    private func setupUI() {
         if let book = presenter.book {
             titleLabel.text = book.title
             amazonLinkLabel.text = book.amazonLink
@@ -28,10 +32,16 @@ class BookDetailViewController: UIViewController {
             descriptionLabel.text = book.bookDescription
             coverImageView.kf.setImage(with: book.coverLink, placeholder: nil, options: nil,
                                        progressBlock: nil, completionHandler: { (image, error, _, _) in
-                if image == nil {
-                    self.coverImageView.image = #imageLiteral(resourceName: "no_photo_avail")
-                }
+                                        if image == nil {
+                                            self.coverImageView.image = #imageLiteral(resourceName: "no_photo_avail")
+                                        }
             })
+        }
+    }
+    
+    private func configureNavigationBar() {
+        if let book = presenter.book {
+            title = book.title
         }
     }
 
