@@ -191,7 +191,7 @@ class BestsellerListPresenter {
         view?.reloadTable()
         
         self.books.enumerated().forEach { (i, book) in
-            fetchBookCover(forISBN: book.isbns, completion: { (imageURL) in
+            fetchBookCover(forISBN: book.isbns, completion: { [unowned self] (imageURL) in
                 guard let URLString = imageURL, let url = URL(string: URLString) else { return }
                 book.coverLink = url
                 DispatchQueue.main.async {
